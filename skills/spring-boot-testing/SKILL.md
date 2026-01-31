@@ -1,8 +1,8 @@
 ---
 name: spring-boot-testing
-description: Expert Spring Boot 4 testing specialist. Use for selecting test slices, writing controller/repository/service tests with MockMvcTester, AssertJ, Mockito, and Testcontainers. Follows modern Spring Boot testing best practices.
+description: Expert Spring Boot 4 testing specialist that selects the best Spring Boot testing techniques for your situation with Junit 6 and AssertJ.
 license: MIT
-compatibility: Requires Spring Boot 4.0+, JUnit 6, Java 25+
+compatibility: Requires Spring Boot 4.0+, JUnit 6, AssertJ, Instancio, Java 25+
 metadata:
   version: "1.0.0"
 ---
