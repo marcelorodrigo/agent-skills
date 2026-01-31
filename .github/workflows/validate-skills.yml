@@ -1,0 +1,67 @@
+name: Validate Agent Skills
+
+on:
+  pull_request:
+  push:
+    branches: master
+
+jobs:
+  validate:
+    name: Validate Skills
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          show-progress: false
+      
+      - name: Checkout skills-ref
+        uses: actions/checkout@v4
+        with:
+          repository: agentskills/agentskills
+          path: .skills-ref-temp
+          sparse-checkout: |
+            skills-ref
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      
+      - name: Setup venv and install skills-ref
+        run: |
+          python -m venv .venv
+          source .venv/bin/activate
+          pip install -e .skills-ref-temp/skills-ref
+          echo "$PWD/.venv/bin" >> $GITHUB_PATH
+      
+      - name: Validate all skills
+        run: |
+          # Find all skill directories
+          skills_dirs=$(find skills -mindepth 1 -maxdepth 1 -type d)
+          
+          exit_code=0
+          echo "### Skills Validation Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          for skill_dir in $skills_dirs; do
+            skill_name=$(basename "$skill_dir")
+            echo "Validating $skill_name..."
+            
+            output=$(skills-ref validate "$skill_dir" 2>&1)
+            validation_exit_code=$?
+            
+            if [ $validation_exit_code -eq 0 ]; then
+              echo "✅ $skill_name: Valid" >> $GITHUB_STEP_SUMMARY
+            else
+              echo "❌ $skill_name: Invalid" >> $GITHUB_STEP_SUMMARY
+              echo '```' >> $GITHUB_STEP_SUMMARY
+              echo "$output" >> $GITHUB_STEP_SUMMARY
+              echo '```' >> $GITHUB_STEP_SUMMARY
+              echo "" >> $GITHUB_STEP_SUMMARY
+              exit_code=1
+            fi
+          done
+          
+          exit $exit_code
