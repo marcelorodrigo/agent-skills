@@ -2,14 +2,14 @@ name: Validate Agent Skills
 
 on:
   pull_request:
-    branches: [ master, main ]
   push:
-    branches: [ master, main ]
+    branches: master
 
 jobs:
   validate:
+    name: Validate Skills
     runs-on: ubuntu-latest
-    
+    timeout-minutes: 15
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
