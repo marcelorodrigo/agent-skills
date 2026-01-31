@@ -4,16 +4,9 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
-      day: "monday"
-      time: "09:00"
     commit-message:
       prefix: "ci"
       include: "scope"
     labels:
       - "dependencies"
       - "github-actions"
-    groups:
-      github-actions:
-        patterns:
-          - "*"
-    open-pull-requests-limit: 10
