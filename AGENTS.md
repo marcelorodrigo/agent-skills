@@ -119,7 +119,7 @@ All commits follow [Conventional Commits](https://www.conventionalcommits.org/):
 
 1. Create directory: `mkdir skills/<skill-name>`
 2. Add `SKILL.md` with required frontmatter and documentation
-3. Follow existing skills as templates (see `conventional-commit/` or `create-pr/`)
+3. Follow existing skills as templates (see `skills/conventional-commit/` or `skills/create-pr/`)
 4. Validate locally: `skills-ref validate skills/<skill-name>`
 5. Commit with appropriate type and scope
 6. Create PR following PR guidelines
