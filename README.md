@@ -10,6 +10,7 @@ Skills available in this repository follow the [Agent Skills format](https://age
 |---------------------|-----------------------------------------------------------------------------|
 | `conventional-commit` | Create commit messages following [Conventional Commits](https://www.conventionalcommits.org/) |
 | `create-pr`         | Create pull requests following best engineering practices                   |
+| `filament-pro`      | Build Laravel admin panels with Filament v5 using server-driven UI          |
 
 ### conventional-commit
 
@@ -27,6 +28,14 @@ npx skills add https://github.com/marcelorodrigo/agent-skills --skill convention
 npx skills add https://github.com/marcelorodrigo/agent-skills --skill create-pr
 ```
 
+### filament-pro
+
+**Killer features:** Comprehensive guide for building Laravel admin panels with Filament v5. Covers server-driven UI, schema-based forms, tables with filters and actions, relation managers, testing with Pest, multi-tenancy, and authorization. Includes 10 detailed reference files and complete code examples for rapid development.
+
+```bash
+npx skills add https://github.com/marcelorodrigo/agent-skills --skill filament-pro
+```
+
 ## Installation
 
 Install skills from this repository using the [skills](https://github.com/vercel-labs/skills) CLI:
@@ -38,6 +47,7 @@ npx skills add marcelorodrigo/agent-skills
 # Install a specific skill
 npx skills add marcelorodrigo/agent-skills --skill conventional-commit
 npx skills add marcelorodrigo/agent-skills --skill create-pr
+npx skills add marcelorodrigo/agent-skills --skill filament-pro
 
 # List available skills
 npx skills add marcelorodrigo/agent-skills --list
