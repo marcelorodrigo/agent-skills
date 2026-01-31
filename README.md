@@ -6,10 +6,10 @@ Skills available in this repository follow the [Agent Skills format](https://age
 
 ## Available Skills
 
-| Skill | Description |
-|-------|-------------|
-| `commit` | Create commit messages following [Conventional Commits](https://www.conventionalcommits.org/) |
-| `create-pr` | Create pull requests following best engineering practices |
+| Skill       | Description                                                                 |
+|-------------|-----------------------------------------------------------------------------|
+| `conventiona;l-commit`    | Create commit messages following [Conventional Commits](https://www.conventionalcommits.org/) |
+| `create-pr` | Create pull requests following best engineering practices                   |
 
 ## Installation
 

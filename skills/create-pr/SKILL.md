@@ -1,6 +1,6 @@
 ---
 name: create-pr
-description: Create pull requests following best conventions. Use when opening PRs, writing PR descriptions, or preparing changes for review.
+description: Create Pull Requests following best conventions. Use when opening PRs, writing PR descriptions, or preparing changes for review.
 ---
 
 # Create Pull Request
@@ -11,14 +11,14 @@ Create pull requests following the best engineering practices.
 
 ## Prerequisites
 
-Before creating a PR, ensure all changes are committed. If there are uncommitted changes, run the commit skill `skill({ name: "commit" })` first to commit them properly.
+Before creating a PR, ensure all changes are committed. If there are uncommitted changes, run the commit skill `skill({ name: "conventional-commit" })` first to commit them properly.
 
 ```bash
 # Check for uncommitted changes
 git status --porcelain
 ```
 
-If the output shows any uncommitted changes (modified, added, or untracked files that should be included), invoke the commit skill `skill({ name: "commit" })` before proceeding.
+If the output shows any uncommitted changes (modified, added, or untracked files that should be included), invoke the commit skill `skill({ name: "conventional-commit" })` before proceeding.
 
 ## Process
 

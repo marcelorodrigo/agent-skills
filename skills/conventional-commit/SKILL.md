@@ -1,6 +1,6 @@
 ---
 name: conventional-commit
-description: Create conventional commit messages following best conventions. Use when committing code changes, writing commit messages, or formatting git history. Follows conventional commits.
+description: Create conventional commit messages following best conventions. Use when committing code changes, writing commit messages, or formatting git history. Follows conventional commits specification.
 ---
 
 # Conventional Commit Messages
