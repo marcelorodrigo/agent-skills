@@ -1,9 +1,9 @@
 ---
-name: commit
-description: Create commit messages following best conventions. Use when committing code changes, writing commit messages, or formatting git history. Follows conventional commits.
+name: conventional-commit
+description: Create conventional commit messages following best conventions. Use when committing code changes, writing commit messages, or formatting git history. Follows conventional commits.
 ---
 
-# Commit Messages
+# Conventional Commit Messages
 
 Follow these conventions when creating commits.
 
