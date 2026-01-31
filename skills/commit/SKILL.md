@@ -23,7 +23,7 @@ If you're on `main` or `master`, create a new branch first:
 git checkout -b <type>/<short-description>
 ```
 
-Branch naming should follow the pattern: `<type>/<short-description>` where type matches the commit type (e.g., `feat/add-user-auth`, `fix/null-pointer-error`, `ref/extract-validation`).
+Branch naming should follow the pattern: `<type>/<short-description>` where type matches the commit type (e.g., `feat/add-user-auth`, `fix/null-pointer-error`, `refactor/extract-validation`).
 
 ## Format
 
@@ -102,7 +102,7 @@ notifications grouped together.
 ### Refactor
 
 ```
-ref: Extract common validation logic to shared module
+refactor: Extract common validation logic to shared module
 
 Move duplicate validation code from three endpoints into a shared
 validator class. No behavior change.
