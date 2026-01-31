@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          show-progress: false
       
       - name: Checkout skills-ref
         uses: actions/checkout@v4
