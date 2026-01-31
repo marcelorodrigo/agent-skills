@@ -12,12 +12,12 @@ jobs:
     timeout-minutes: 15
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           show-progress: false
       
       - name: Checkout skills-ref
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: agentskills/agentskills
           path: .skills-ref-temp
