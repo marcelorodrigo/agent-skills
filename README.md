@@ -29,18 +29,18 @@ npx skills add https://github.com/marcelorodrigo/agent-skills --skill create-pr
 
 ## Installation
 
-Install skills from this repository using the [add-skill](https://github.com/vercel-labs/add-skill) CLI:
+Install skills from this repository using the [skills](https://github.com/vercel-labs/skills) CLI:
 
 ```bash
 # Install all skills
-npx add-skill marcelorodrigo/agent-skills
+npx skills add marcelorodrigo/agent-skills
 
 # Install a specific skill
-npx add-skill marcelorodrigo/agent-skills --skill conventional-commit
-npx add-skill marcelorodrigo/agent-skills --skill create-pr
+npx skills add marcelorodrigo/agent-skills --skill conventional-commit
+npx skills add marcelorodrigo/agent-skills --skill create-pr
 
 # List available skills
-npx add-skill marcelorodrigo/agent-skills --list
+npx skills add marcelorodrigo/agent-skills --list
 ```
 
 ## Repository Guide
