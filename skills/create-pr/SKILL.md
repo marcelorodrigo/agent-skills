@@ -88,7 +88,7 @@ gh pr create --draft --title "<type>(<scope>): <description>" --body "
 **Title format** follows commit conventions:
 - `feat(scope): Add new feature`
 - `fix(scope): Fix the bug`
-- `ref: Refactor something`
+- `refactor(scope): Refactor something`
 
 ## PR Description Examples
 
