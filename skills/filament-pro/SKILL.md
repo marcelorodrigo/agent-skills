@@ -2,7 +2,7 @@
 name: filament-pro
 description: Build Laravel admin panels with Filament v5. Use for creating resources, forms, tables, widgets, and testing admin interfaces with Livewire v4.
 license: MIT
-compatibility: Requires Laravel 11+, PHP 8.2+, Livewire v4
+compatibility: Requires Laravel 11.28+, PHP 8.2+, Livewire v4, TailwindCSS v4.1+
 metadata:
   version: "1.0.0"
 ---
