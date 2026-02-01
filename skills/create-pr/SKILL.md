@@ -4,7 +4,7 @@ description: Create Pull Requests following best conventions. Use when opening P
 license: MIT
 compatibility: Requires GitHub CLI (gh) authenticated and available
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
 ---
 
 # Create Pull Request
@@ -142,7 +142,34 @@ duplicating logic across endpoints.
 
 ## Editing Existing PRs
 
-If you need to update a PR after creation, use `gh api` instead of `gh pr edit`:
+When updating a PR after creation, the skill automatically selects the best approach based on your GitHub CLI version:
+
+- **gh 2.82.1+**: Uses native `gh pr edit` (clean, full-featured)
+- **gh < 2.82.1**: Falls back to `gh api` (avoids Projects classic deprecation bug)
+
+### Check Your Version
+
+```bash
+# Check GitHub CLI version
+gh --version
+```
+
+### Modern Approach (gh 2.82.1+)
+
+```bash
+# Update PR description
+gh pr edit PR_NUMBER --body "Updated description here"
+
+# Update PR title
+gh pr edit PR_NUMBER --title "New Title here"
+
+# Update both
+gh pr edit PR_NUMBER --title "new: Title" --body "New description"
+```
+
+### Legacy Fallback (gh < 2.82.1)
+
+If `gh pr edit` fails with a "Projects (classic) is being deprecated" error, use the API directly:
 
 ```bash
 # Update PR description
@@ -159,4 +186,4 @@ gh api -X PATCH repos/{owner}/{repo}/pulls/PR_NUMBER \
   -f body='New description'
 ```
 
-Note: `gh pr edit` is currently broken due to GitHub's Projects (classic) deprecation.
+**Note**: The Projects (classic) bug was fixed in gh 2.82.1 (October 2025). Upgrade with your package manager if you're on an older version.
