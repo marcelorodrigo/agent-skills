@@ -11,6 +11,7 @@ Skills available in this repository follow the [Agent Skills format](https://age
 | `conventional-commit` | Create commit messages following [Conventional Commits](https://www.conventionalcommits.org/) |
 | `create-pr`         | Create pull requests following best engineering practices                   |
 | `filament-pro`      | Build Laravel admin panels with Filament v5 using server-driven UI          |
+| `phpstan-fixer`     | Fix PHPStan static analysis errors with proper type annotations and PHPDocs |
 | `spring-boot-testing` | Expert Spring Boot 4 testing with best practices and modern Java 25 features |
 
 ### conventional-commit
@@ -37,6 +38,14 @@ npx skills add https://github.com/marcelorodrigo/agent-skills --skill create-pr
 npx skills add https://github.com/marcelorodrigo/agent-skills --skill filament-pro
 ```
 
+### phpstan-fixer
+
+**Killer features:** Systematically fixes PHPStan static analysis errors without suppressing them. Teaches agents to add proper type annotations, PHPDocs, and framework-specific fixes (Laravel/Symfony). Respects project configuration, never modifies phpstan.neon without approval, uses Question tool for user decisions, and verifies fixes by re-running analysis. Includes error identifier reference and debugging strategies.
+
+```bash
+npx skills add https://github.com/marcelorodrigo/agent-skills --skill phpstan-fixer
+```
+
 ### spring-boot-testing
 
 **Killer features:** Expert guide for testing Spring Boot 4 applications with Java 25 features. Selects optimal test slices (@WebMvcTest, @DataJpaTest, @SpringBootTest), uses MockMvcTester with AssertJ-style assertions, integrates Testcontainers for real database testing, applies production-scenario testing, and maintains 80% coverage. Includes complexity assessment, helper methods, and @DisplayName best practices with focused reference files.
@@ -57,6 +66,7 @@ npx skills add marcelorodrigo/agent-skills
 npx skills add marcelorodrigo/agent-skills --skill conventional-commit
 npx skills add marcelorodrigo/agent-skills --skill create-pr
 npx skills add marcelorodrigo/agent-skills --skill filament-pro
+npx skills add marcelorodrigo/agent-skills --skill phpstan-fixer
 npx skills add marcelorodrigo/agent-skills --skill spring-boot-testing
 
 # List available skills
