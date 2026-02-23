@@ -1,6 +1,6 @@
 ---
 name: phpstan-fixer
-description: Fix PHPStan errors by adding type annotations and PHPDocs. Never ignores errors without user approval, respecting project configuration.
+description: Fix PHPStan static analysis errors by adding type annotations and PHPDocs. Use when encountering PHPStan errors, type mismatches, missing type hints, or static analysis failures. Never ignores errors without user approval.
 license: MIT
 compatibility: Requires PHPStan installed in project
 metadata:
