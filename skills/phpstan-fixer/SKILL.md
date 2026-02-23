@@ -1,6 +1,9 @@
 ---
 name: phpstan-fixer
-description: Fix PHPStan static analysis errors by adding type annotations and PHPDocs. Use when encountering PHPStan errors, type mismatches, missing type hints, or static analysis failures. Never ignores errors without user approval.
+description: |
+  Fix PHPStan static analysis errors by adding type annotations and PHPDocs.
+  Use when encountering PHPStan errors, type mismatches, missing type hints,
+  or static analysis failures. Never ignores errors without user approval.
 license: MIT
 compatibility: Requires PHPStan installed in project
 metadata:
@@ -14,12 +17,18 @@ suppressing them, respecting the project's configured strictness level.
 
 ## Core Principles
 
-1. **Never suppress errors as first resort** — Fix the root cause with proper types and annotations
-2. **Respect user configuration** — Never modify `phpstan.neon` settings (level, paths, parameters)
-3. **No silent ignoring** — Never add `ignoreErrors` to config without explicit user approval
-4. **Context-aware fixes** — Understand the project type (Laravel, Symfony, vanilla PHP) before proposing solutions
-5. **Ask before ignoring** — If a legitimate ignore is needed, explain why and get user approval first
-6. **Don't fix third-party code** — Never modify files in `vendor/`. Use stub files instead to override wrong types
+1. **Never suppress errors as first resort** — Fix the root cause with proper
+   types and annotations
+2. **Respect user configuration** — Never modify `phpstan.neon` settings
+   (level, paths, parameters)
+3. **No silent ignoring** — Never add `ignoreErrors` to config without explicit
+   user approval
+4. **Context-aware fixes** — Understand the project type (Laravel, Symfony,
+   vanilla PHP) before proposing solutions
+5. **Ask before ignoring** — If a legitimate ignore is needed, explain why and
+   get user approval first
+6. **Don't fix third-party code** — Never modify files in `vendor/`. Use stub
+   files instead to override wrong types
 
 ## Workflow
 
@@ -54,7 +63,7 @@ cat AGENTS.md
 
 PHPStan errors have this structure:
 
-```
+```text
 ------ ----------------------------------------------
 Line   /path/to/File.php
 ------ ----------------------------------------------
@@ -95,7 +104,7 @@ vendor/bin/phpstan analyse
 #### `missingType.parameter` — Missing parameter type
 
 **Error:**
-```
+```text
 Parameter $name has no type specified.
 ```
 
@@ -129,7 +138,7 @@ function processUsers(array $users): void { ... }
 #### `missingType.return` — Missing return type
 
 **Error:**
-```
+```text
 Method foo() has no return type specified.
 ```
 
@@ -163,7 +172,7 @@ public function findUser(int $id): ?User { ... }
 #### `argument.type` — Wrong argument type
 
 **Error:**
-```
+```text
 Parameter #1 $id of method find() expects int, string given.
 ```
 
@@ -188,7 +197,7 @@ $user = $repository->find($id);
 #### `return.type` — Wrong return type
 
 **Error:**
-```
+```text
 Method foo() should return User but returns User|null.
 ```
 
@@ -220,7 +229,7 @@ public function getUser(): User {
 #### `property.notFound` — Undefined property access
 
 **Error:**
-```
+```text
 Access to an undefined property User::$name.
 ```
 
@@ -256,7 +265,7 @@ php artisan ide-helper:models
 #### `property.onlyWritten` — Property written but never read
 
 **Error:**
-```
+```text
 Property User::$name is never read, only written.
 ```
 
@@ -276,7 +285,7 @@ public function getName(): string {
 #### `method.notFound` — Undefined method call
 
 **Error:**
-```
+```text
 Call to an undefined method App\User::getFullName().
 ```
 
@@ -314,7 +323,7 @@ class User extends Model { ... }
 #### `offsetAccess.notFound` — Undefined array offset
 
 **Error:**
-```
+```text
 Offset 'email' does not exist on array.
 ```
 
@@ -347,7 +356,7 @@ $email = $data['email'] ?? 'default@example.com';
 #### `missingType.generics` — Missing generic type
 
 **Error:**
-```
+```text
 Class Collection has @template T but does not specify it.
 ```
 
@@ -371,7 +380,7 @@ $users = User::all();
 #### `deadCode.unreachable` — Unreachable code
 
 **Error:**
-```
+```text
 Unreachable statement - code above always terminates.
 ```
 
@@ -394,7 +403,7 @@ function foo() {
 #### `identical.alwaysTrue` / `identical.alwaysFalse` — Condition is always true/false
 
 **Error:**
-```
+```text
 Strict comparison using === between int and string will always evaluate to false.
 ```
 
@@ -482,7 +491,7 @@ $data = $form->getData();
 Sometimes a legitimate ignore is needed. **Always ask the user first using the Question tool**:
 
 **Step 1: Explain the situation**
-```
+```text
 I found a PHPStan error that cannot be easily fixed:
 
 Error: [describe error]
@@ -491,7 +500,7 @@ Reason: [explain why it can't be fixed]
 ```
 
 **Step 2: Use Question tool to get user choice**
-```
+```text
 Use the Question tool with these options:
 - Header: "PHPStan Error Resolution"
 - Question: "How would you like to handle this error?"
