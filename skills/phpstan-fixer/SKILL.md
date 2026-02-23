@@ -19,6 +19,7 @@ suppressing them, respecting the project's configured strictness level.
 3. **No silent ignoring** — Never add `ignoreErrors` to config without explicit user approval
 4. **Context-aware fixes** — Understand the project type (Laravel, Symfony, vanilla PHP) before proposing solutions
 5. **Ask before ignoring** — If a legitimate ignore is needed, explain why and get user approval first
+6. **Don't fix third-party code** — Never modify files in `vendor/`. Use stub files instead to override wrong types
 
 ## Workflow
 
@@ -28,13 +29,13 @@ Before fixing errors, identify the project type:
 
 ```bash
 # Check for Laravel
-cat composer.json | grep laravel/framework
+grep laravel/framework composer.json
 
 # Check for Symfony
-cat composer.json | grep symfony/symfony
+grep symfony/symfony composer.json
 
 # Check for PHPStan extensions
-cat composer.json | grep phpstan
+grep phpstan composer.json
 
 # Read PHPStan config
 cat phpstan.neon
@@ -71,6 +72,21 @@ Line   /path/to/File.php
 ### Step 3: Apply the Right Fix
 
 Use the error identifier to determine the fix strategy:
+
+### Step 4: Verify the Fix
+
+After applying fixes, run PHPStan again to confirm:
+
+```bash
+vendor/bin/phpstan analyse
+```
+
+**Important:**
+- If new errors appear, the fix may have been incorrect. Re-analyze the error and try a different approach.
+- If the same error persists, the fix wasn't applied correctly. Double-check the code.
+- If errors are resolved, mark the fix as successful and move to the next error.
+
+---
 
 ## Common Error Fixes
 
@@ -402,7 +418,7 @@ if ($id === 123) { ... }
 composer require --dev larastan/larastan
 ```
 
-**Add to `phpstan.neon`:**
+**Check `phpstan.neon` includes Larastan** (ask user to add if missing):
 ```yaml
 includes:
     - vendor/larastan/larastan/extension.neon
@@ -437,7 +453,7 @@ $email = $request->string('email')->toString();
 composer require --dev phpstan/phpstan-symfony
 ```
 
-**Add to `phpstan.neon`:**
+**Check `phpstan.neon` includes Symfony extension** (ask user to add if missing):
 ```yaml
 includes:
     - vendor/phpstan/phpstan-symfony/extension.neon
@@ -463,22 +479,55 @@ $data = $form->getData();
 
 ## When Ignoring is Acceptable (Last Resort)
 
-Sometimes a legitimate ignore is needed. **Always ask the user first** with this template:
+Sometimes a legitimate ignore is needed. **Always ask the user first using the Question tool**:
 
+**Step 1: Explain the situation**
 ```
 I found a PHPStan error that cannot be easily fixed:
 
 Error: [describe error]
 Location: [file:line]
 Reason: [explain why it can't be fixed]
+```
 
-Options:
-1. Use @phpstan-ignore with explanation comment
-2. Add to baseline (for legacy code migration)
-3. Refactor code to satisfy PHPStan
+**Step 2: Use Question tool to get user choice**
+```
+Use the Question tool with these options:
+- Header: "PHPStan Error Resolution"
+- Question: "How would you like to handle this error?"
+- Options:
+  1. "Use @phpstan-ignore with comment" - description: "Add inline ignore with explanation (recommended for third-party type issues)"
+  2. "Add to baseline" - description: "Generate baseline file (recommended for legacy code migration)"
+  3. "Refactor code" - description: "Modify code to satisfy PHPStan (most robust but may require significant changes)"
+  4. "Skip for now" - description: "Leave unfixed and continue with other errors"
+```
 
-I recommend option [X] because [reason].
-Do you approve?
+**Example Question tool usage:**
+```json
+{
+  "questions": [{
+    "header": "PHPStan Error Resolution",
+    "question": "File src/Service.php:42 has argument type mismatch with third-party API. How should I handle this?",
+    "options": [
+      {
+        "label": "Use @phpstan-ignore (Recommended)",
+        "description": "Add inline ignore with explanation"
+      },
+      {
+        "label": "Add to baseline",
+        "description": "Include in baseline file for tracking"
+      },
+      {
+        "label": "Refactor code",
+        "description": "Modify to satisfy PHPStan"
+      },
+      {
+        "label": "Skip for now",
+        "description": "Continue with other errors"
+      }
+    ]
+  }]
+}
 ```
 
 **Valid reasons for ignoring:**
