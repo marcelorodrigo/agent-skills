@@ -33,7 +33,7 @@ assertThat(statuses).containsExactly("NEW", "PENDING", "COMPLETED");
 // Contains exactly these elements in any order (no extras)
 assertThat(statuses).containsExactlyInAnyOrder("COMPLETED", "NEW", "PENDING");
 
-// Contains at least these elements (allows extras)
+// Contains any of these elements (at least one match required)
 assertThat(statuses).containsAnyOf("NEW", "CANCELLED");
 
 // Does not contain

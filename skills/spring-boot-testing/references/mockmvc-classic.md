@@ -20,7 +20,7 @@ class OrderControllerTest {
   @Autowired
   private MockMvc mvc;
 
-  @MockitoBean
+  @MockBean
   private OrderService orderService;
 }
 ```
@@ -177,6 +177,7 @@ mvc.perform(get("/orders/1"))
 ## Static Imports
 
 ```java
+import org.springframework.boot.test.mock.mockito.MockBean;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.*;

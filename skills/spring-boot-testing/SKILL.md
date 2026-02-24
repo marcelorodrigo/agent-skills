@@ -37,15 +37,15 @@ Expert guide for testing Spring Boot 4 applications with modern patterns and bes
 
 ## Testing Tools Reference
 
-- [references/mockmvc-tester.md](references/mockmvc-tester.md) - AssertJ-style MockMvc (Spring Boot 3.2+, recommended)
-- [references/mockmvc-classic.md](references/mockmvc-classic.md) - Traditional MockMvc (pre-3.2, legacy tests, or migration guidance)
+- [references/mockmvc-tester.md](references/mockmvc-tester.md) - AssertJ-style MockMvc (3.2+)
+- [references/mockmvc-classic.md](references/mockmvc-classic.md) - Traditional MockMvc (pre-3.2)
 - [references/resttestclient.md](references/resttestclient.md) - Spring Boot 4+ REST client
 - [references/mockitobean.md](references/mockitobean.md) - Mocking dependencies
 
 ## Assertion Libraries
 
-- [references/assertj-basics.md](references/assertj-basics.md) - Scalars, strings, booleans, dates, optionals, exceptions
-- [references/assertj-collections.md](references/assertj-collections.md) - Lists, Sets, Maps, arrays: extracting, filtering, matching elements
+- [references/assertj-basics.md](references/assertj-basics.md) - Scalars, strings, booleans, dates
+- [references/assertj-collections.md](references/assertj-collections.md) - Lists, Sets, Maps, arrays
 
 ## Testcontainers
 
