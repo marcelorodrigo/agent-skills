@@ -4,7 +4,7 @@ description: Expert Spring Boot 4 testing specialist that selects the best Sprin
 license: MIT
 compatibility: Requires Spring Boot 4.0+, JUnit 6, AssertJ, Instancio, Java 25+
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
 ---
 
 # Spring Boot Testing
@@ -37,15 +37,15 @@ Expert guide for testing Spring Boot 4 applications with modern patterns and bes
 
 ## Testing Tools Reference
 
-- [references/mockmvc-tester.md](references/mockmvc-tester.md) - AssertJ-style MockMvc (recommended)
-- [references/mockmvc-classic.md](references/mockmvc-classic.md) - Traditional MockMvc
+- [references/mockmvc-tester.md](references/mockmvc-tester.md) - AssertJ-style MockMvc (3.2+)
+- [references/mockmvc-classic.md](references/mockmvc-classic.md) - Traditional MockMvc (pre-3.2)
 - [references/resttestclient.md](references/resttestclient.md) - Spring Boot 4+ REST client
 - [references/mockitobean.md](references/mockitobean.md) - Mocking dependencies
 
 ## Assertion Libraries
 
-- [references/assertj-basics.md](references/assertj-basics.md) - Core AssertJ patterns
-- [references/assertj-collections.md](references/assertj-collections.md) - Collection assertions
+- [references/assertj-basics.md](references/assertj-basics.md) - Scalars, strings, booleans, dates
+- [references/assertj-collections.md](references/assertj-collections.md) - Lists, Sets, Maps, arrays
 
 ## Testcontainers
 
