@@ -185,4 +185,5 @@ gh api -X PATCH repos/{owner}/{repo}/pulls/PR_NUMBER \
   -f body='New description'
 ```
 
-**Note**: The Projects (classic) bug was fixed in gh 2.82.1 (October 2025). Upgrade with your package manager if you're on an older version.
+**Note**: The Projects (classic) bug was fixed in gh 2.82.1 (October 2025).
+Upgrade with your package manager if you're on an older version.
