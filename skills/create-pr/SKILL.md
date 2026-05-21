@@ -4,7 +4,7 @@ description: Create Pull Requests following best conventions. Use when opening P
 license: MIT
 compatibility: Requires GitHub CLI (gh) authenticated and available
 metadata:
-  version: "1.1.0"
+  version: "1.2.0"
 ---
 
 # Create Pull Request
@@ -84,7 +84,7 @@ Use this structure for PR descriptions (ignoring any repository PR templates):
 ### Step 4: Create the PR
 
 ```bash
-gh pr create --draft --title "<type>(<scope>): <description>" --body "
+gh pr create --title "<type>(<scope>): <description>" --body "
 <description body here>
 "
 ```
@@ -138,7 +138,6 @@ duplicating logic across endpoints.
 - **One PR per feature/fix** - Don't bundle unrelated changes
 - **Keep PRs reviewable** - Smaller PRs get faster, better reviews
 - **Explain the why** - Code shows what; description explains why
-- **Mark WIP early** - Use draft PRs for early feedback
 
 ## Editing Existing PRs
 
@@ -186,4 +185,5 @@ gh api -X PATCH repos/{owner}/{repo}/pulls/PR_NUMBER \
   -f body='New description'
 ```
 
-**Note**: The Projects (classic) bug was fixed in gh 2.82.1 (October 2025). Upgrade with your package manager if you're on an older version.
+**Note**: The Projects (classic) bug was fixed in gh 2.82.1 (October 2025).
+Upgrade with your package manager if you're on an older version.
