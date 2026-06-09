@@ -1,6 +1,9 @@
 ---
 name: technical-writing-for-engineers
 description: Write, draft, outline, or improve technical content for senior engineering audiences. Teaches narrative arc (Before → Journey → After), editorial voice, structure, hooks, and specific conventions for an audience of principal/staff engineers and tech leads.
+license: MIT
+metadata:
+  version: "1.0.0"
 ---
 
 # Technical Writing for Engineers
