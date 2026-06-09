@@ -6,6 +6,8 @@ Skills available in this repository follow the [Agent Skills format](https://age
 
 ## Available Skills
 
+### Technical Skills
+
 | Skill               | Description                                                                 |
 |---------------------|-----------------------------------------------------------------------------|
 | `conventional-commit` | Create commit messages following [Conventional Commits](https://www.conventionalcommits.org/) |
@@ -13,6 +15,12 @@ Skills available in this repository follow the [Agent Skills format](https://age
 | `filament-pro`      | Build Laravel admin panels with Filament v5 using server-driven UI          |
 | `phpstan-fixer`     | Fix PHPStan static analysis errors with proper type annotations and PHPDocs |
 | `spring-boot-testing` | Expert Spring Boot 4 testing with best practices and modern Java 25 features |
+
+### Soft Skills
+
+| Skill               | Description                                                                 |
+|---------------------|-----------------------------------------------------------------------------|
+| `technical-writing-for-engineers` | Write technical content for senior engineering audiences with narrative structure and editorial voice |
 
 ### conventional-commit
 
@@ -51,7 +59,15 @@ npx skills add https://github.com/marcelorodrigo/agent-skills --skill phpstan-fi
 **Killer features:** Expert guide for testing Spring Boot 4 applications with Java 25 features. Selects optimal test slices (@WebMvcTest, @DataJpaTest, @SpringBootTest), uses MockMvcTester with AssertJ-style assertions, integrates Testcontainers for real database testing, applies production-scenario testing, and maintains 80% coverage. Includes complexity assessment, helper methods, and @DisplayName best practices with focused reference files.
 
 ```bash
-npx skills add https://github.com/marcelorodrigo/agent-skills --skill spring-boot-testing
+npx skills add marcelorodrigo/agent-skills --skill spring-boot-testing
+```
+
+### technical-writing-for-engineers
+
+**Killer features:** Teaches narrative structure (Before → Journey → After) for technical content targeted at senior engineers and tech leads. Guides agents to write with intellectual honesty, craft compelling hooks that signal stakes and audience, structure posts around reader decisions, and avoid filler patterns. Includes banned words list, formatting rules, and guidelines for titles and conclusions that deliver actual takeaways rather than summaries.
+
+```bash
+npx skills add marcelorodrigo/agent-skills --skill technical-writing-for-engineers
 ```
 
 ## Installation
@@ -68,6 +84,7 @@ npx skills add marcelorodrigo/agent-skills --skill create-pr
 npx skills add marcelorodrigo/agent-skills --skill filament-pro
 npx skills add marcelorodrigo/agent-skills --skill phpstan-fixer
 npx skills add marcelorodrigo/agent-skills --skill spring-boot-testing
+npx skills add marcelorodrigo/agent-skills --skill technical-writing-for-engineers
 
 # List available skills
 npx skills add marcelorodrigo/agent-skills --list
