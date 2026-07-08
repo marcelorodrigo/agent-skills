@@ -3,7 +3,7 @@ name: conventional-commit
 description: Create conventional commit messages following best conventions. Use when committing code changes, writing commit messages, or formatting git history. Follows conventional commits specification.
 license: MIT
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
 ---
 
 # Conventional Commit Messages
@@ -59,8 +59,8 @@ The header is required. Scope is optional. All lines must stay under 100 charact
 
 ## Subject Line Rules
 
-- Use imperative, present tense: "Add feature" not "Added feature"
-- Capitalize the first letter
+- Use imperative, present tense: "add feature" not "added feature"
+- Do not capitalize the first letter
 - No period at the end
 - Maximum 70 characters
 
@@ -86,7 +86,7 @@ The commit contains the following structural elements, to communicate intent to 
 ### Simple fix
 
 ```
-fix(api): Handle null response in user endpoint
+fix(api): handle null response in user endpoint
 
 The user API could return null for deleted accounts, causing a crash
 in the dashboard. Add null check before accessing user properties.
@@ -95,7 +95,7 @@ in the dashboard. Add null check before accessing user properties.
 ### Feature with scope
 
 ```
-feat(alerts): Add Slack thread replies for alert updates
+feat(alerts): add Slack thread replies for alert updates
 
 When an alert is updated or resolved, post a reply to the original
 Slack thread instead of creating a new message. This keeps related
@@ -105,7 +105,7 @@ notifications grouped together.
 ### Refactor
 
 ```
-refactor: Extract common validation logic to shared module
+refactor: extract common validation logic to shared module
 
 Move duplicate validation code from three endpoints into a shared
 validator class. No behavior change.
@@ -114,7 +114,7 @@ validator class. No behavior change.
 ### Breaking change
 
 ```
-feat(api)!: Remove deprecated v1 endpoints
+feat(api)!: remove deprecated v1 endpoints
 
 Remove all v1 API endpoints that were deprecated in version 23.1.
 Clients should migrate to v2 endpoints.
@@ -125,7 +125,7 @@ BREAKING CHANGE: v1 endpoints no longer available
 ## Revert Format
 
 ```
-revert: feat(api): Add new endpoint
+revert: feat(api): add new endpoint
 
 This reverts commit abc123def456.
 

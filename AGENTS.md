@@ -101,7 +101,7 @@ All commits follow [Conventional Commits](https://www.conventionalcommits.org/):
 **Subject rules**:
 - Maximum 70 characters
 - Use imperative, present tense
-- Capitalize first letter
+- Do not capitalize the first letter
 - No period at the end
 
 **Branch naming**: `<type>/<short-description>`
