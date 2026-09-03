@@ -12,6 +12,7 @@ Skills available in this repository follow the [Agent Skills format](https://age
 |---------------------|-----------------------------------------------------------------------------|
 | `conventional-commit` | Create commit messages following [Conventional Commits](https://www.conventionalcommits.org/) |
 | `create-pr`         | Create pull requests following best engineering practices                   |
+| `dependency-updater` | Analyze dependency upgrades and produce implementation-ready migration plans |
 | `filament-pro`      | Build Laravel admin panels with Filament v5 using server-driven UI          |
 | `phpstan-fixer`     | Fix PHPStan static analysis errors with proper type annotations and PHPDocs |
 | `spring-boot-testing` | Expert Spring Boot 4 testing with best practices and modern Java 25 features |
@@ -36,6 +37,19 @@ npx skills add https://github.com/marcelorodrigo/agent-skills --skill convention
 
 ```bash
 npx skills add https://github.com/marcelorodrigo/agent-skills --skill create-pr
+```
+
+### dependency-updater
+
+**Killer features:** Scans polyglot repositories and monorepos for manifests, lockfiles,
+workspace boundaries, and package managers. Traces dependency usage across source, tests,
+configuration, build tooling, CI, generated code, and documentation. Researches authoritative
+release notes and migration guides, maps applicable changes to repository files, and produces
+a grouped implementation handoff with mandatory compile/build and test verification steps.
+The skill is planning-only and does not modify project files.
+
+```bash
+npx skills add https://github.com/marcelorodrigo/agent-skills --skill dependency-updater
 ```
 
 ### filament-pro
@@ -85,6 +99,7 @@ npx skills add marcelorodrigo/agent-skills --skill filament-pro
 npx skills add marcelorodrigo/agent-skills --skill phpstan-fixer
 npx skills add marcelorodrigo/agent-skills --skill spring-boot-testing
 npx skills add marcelorodrigo/agent-skills --skill technical-writing-for-engineers
+npx skills add marcelorodrigo/agent-skills --skill dependency-updater
 
 # List available skills
 npx skills add marcelorodrigo/agent-skills --list
