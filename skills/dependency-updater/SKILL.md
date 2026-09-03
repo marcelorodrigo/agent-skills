@@ -10,8 +10,7 @@ metadata:
 
 Analyze requests to update a dependency, framework, library, plugin, or related
 tool. Produce a migration plan for a separate implementation workflow. Do not
-modify project files unless the user explicitly asks for implementation after
-reviewing the plan.
+modify project files; defer implementation changes to the separate workflow.
 
 ## When to Use
 
@@ -208,7 +207,8 @@ it as a required change.
 
 ### 7. Build the Implementation Handoff
 
-Organize the plan into implementation groups. At minimum, cover:
+Evaluate each of the following implementation-group categories and include a group
+only when it contains relevant work:
 
 - Dependency declarations, version catalogs, and lockfiles.
 - Source-code API or behavior migrations.
@@ -390,15 +390,16 @@ the recommended implementation order and any approval needed before editing.>
 
 Before returning the plan, confirm that:
 
-- The repository was scanned for all relevant manifests and project boundaries.
-- The dependency's declarations and resolved versions were identified where possible.
-- Production, test, configuration, build, CI, generated, and documentation usage was
-  considered.
-- The target version was user-specified or backed by an identified authoritative source.
-- Release notes, migration guides, breaking changes, and deprecations were reviewed.
-- Documentation findings were mapped to repository evidence and classified.
-- Required changes are grouped and ordered for implementation.
-- Risks, assumptions, and unresolved questions are explicit.
-- The Verification Plan includes compile or build and test commands.
-- Planned, executed, blocked, and failed checks are not conflated.
-- No project files were modified as part of producing the plan.
+- Scan the repository for all relevant manifests and project boundaries.
+- Identify the dependency's declarations and resolved versions where possible.
+- Consider production, test, configuration, build, CI, generated, and documentation
+  usage.
+- Confirm that the target version is user-specified or backed by an identified
+  authoritative source.
+- Review release notes, migration guides, breaking changes, and deprecations.
+- Map documentation findings to repository evidence and classify them.
+- Group and order required changes for implementation.
+- State risks, assumptions, and unresolved questions explicitly.
+- Include compile or build and test commands in the Verification Plan.
+- Keep planned, executed, blocked, and failed checks distinct.
+- Do not modify project files while producing the plan.

@@ -46,7 +46,7 @@ workspace boundaries, and package managers. Traces dependency usage across sourc
 configuration, build tooling, CI, generated code, and documentation. Researches authoritative
 release notes and migration guides, maps applicable changes to repository files, and produces
 a grouped implementation handoff with mandatory compile/build and test verification steps.
-The skill is planning-only and does not modify project files.
+The skill is planning-only and hands implementation changes to a separate workflow.
 
 ```bash
 npx skills add https://github.com/marcelorodrigo/agent-skills --skill dependency-updater
