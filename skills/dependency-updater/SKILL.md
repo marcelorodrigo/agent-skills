@@ -3,7 +3,7 @@ name: dependency-updater
 description: Analyze dependency upgrades and produce an implementation-ready migration plan.
 license: MIT
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
 ---
 
 # Dependency Updater
@@ -274,117 +274,16 @@ does not change the upgrade scope, document it in the final output.
 
 ## Required Output
 
-Use the following structure as a conditional template. Include a section or
-subsection only when the analysis produces relevant information. Omit sections
-with no meaningful findings instead of adding empty tables or "None identified"
-placeholders. Always include `Executive Summary`, `Request and Scope`,
-`Verification Plan`, and `Implementation Handoff`; these sections establish the
-upgrade context, validation work, and next phase. Include the remaining sections
-only when they apply to the repository and upgrade.
+Provide a summary of the upgrade analysis and a migration plan that includes:
 
-```markdown
-# Dependency Upgrade Plan: <dependency> <current> to <target>
+- The dependency name, current version, and target version.
+- The scope of the upgrade, with a list of required changes grouped by category.
+  - Files that need to be changed, added, or removed, with the reason for each change.
+  - The order of changes and any dependencies between them.
+- Risks, assumptions, and unresolved questions.
+- The Verification Plan with commands and expected outcomes.
 
-## Executive Summary
-
-<Short description of the upgrade, scope, release channel, and overall risk.>
-
-## Request and Scope
-
-- Requested dependency:
-- Current version or range:
-- Target version or range:
-- Target selection basis:
-- Included projects or workspaces:
-- Excluded projects or workspaces:
-
-## Repository Inventory
-
-| Project or workspace | Ecosystem | Package manager | Manifest or build file |
-| --- | --- | --- | --- |
-| ... | ... | ... | ... |
-
-### Dependency Declarations
-
-| File | Declaration | Current value | Dependency role | Resolved value |
-| --- | --- | --- | --- | --- |
-| ... | ... | ... | ... | ... |
-
-## Usage Inventory
-
-Group findings by production source, tests, configuration, build tooling, CI,
-generated code, and documentation. Include exact file paths and symbols or keys
-where available.
-
-## Research Sources
-
-| Source | Versions covered | Key findings | Consulted |
-| --- | --- | --- | --- |
-| ... | ... | ... | ... |
-
-## Migration Findings
-
-| Finding | Applicability | Repository evidence | Required action |
-| --- | --- | --- | --- |
-| ... | Required / Likely / Not applicable / Unknown | ... | ... |
-
-## Grouped Implementation Plan
-
-### 1. Dependency and Lockfile Changes
-
-For each step, include the file, current state, target state, rationale, and
-dependencies on other steps.
-
-### 2. Source-Code Changes
-
-<Concrete file-level migration steps.>
-
-### 3. Configuration and Build Changes
-
-<Concrete configuration, plugin, compiler, runtime, or platform steps.>
-
-### 4. Test and Generated-Code Changes
-
-<Concrete test, fixture, mock, schema, or generated-artifact steps.>
-
-### 5. CI, Deployment, and Documentation Changes
-
-<Concrete automation, container, deployment, example, or documentation steps.>
-
-### 6. Cleanup
-
-<Deprecated API removal, compatibility cleanup, and follow-up work.>
-
-## Risks, Assumptions, and Open Questions
-
-### Risks
-
-- <Risk, impact, and mitigation.>
-
-### Assumptions
-
-- <Assumption and the evidence supporting it.>
-
-### Open Questions
-
-- <Question, why it matters, and who or what can resolve it.>
-
-## Verification Plan
-
-| Stage | Command or check | Scope | Expected result | Status |
-| --- | --- | --- | --- | --- |
-| Baseline build | `<command>` | ... | ... | Planned / Executed / Blocked / Failed |
-| Post-upgrade build | `<command>` | ... | ... | Planned |
-| Tests | `<command>` | ... | ... | Planned |
-
-Include compile or build validation and relevant tests even when no source-code
-changes are expected. Record actual results only for commands run during this task.
-
-## Implementation Handoff
-
-<State that this document is ready for a separate implementation workflow. List
-the recommended implementation order and any approval needed before editing.>
-```
+If any of the items above is not relevant or is not applicable, dont include it in the output. If the plan is incomplete, state what is missing and why.
 
 ## Completion Criteria
 
