@@ -98,9 +98,19 @@ fix(client): update dependencies to address security advisories
 
 ### Step 3: Write the Description
 
-Write one or two short paragraphs for ordinary PRs: what changed and why. Use the repository's
-terms and established motivation; ask the user if needed rather than inventing a justification.
-Bring material changes to guarantees or enforcement near the beginning.
+Choose structure by review complexity. Use the repository's terms and established motivation;
+ask the user if needed rather than inventing a justification.
+
+- Use short prose for one straightforward behavior change whose motivation and impact fit in a
+  few sentences.
+- Use lightweight descriptive headings (such as `Why` and `What changed`) with grouped bullets
+  for multiple distinct changes or review concerns that must be understood together. Group by
+  concern, not by changed file.
+- Give consequential migration, compatibility, security, and rollout or rollback constraints
+  dedicated sections. Bring material changes to guarantees or enforcement near the beginning.
+
+Use file count as a cue to inspect breadth, not a threshold: many mechanically repeated files
+can still be simple, while two files can carry substantial risk.
 
 Keep details that help reviewers assess behavior, compatibility, or risk. Leave routine file
 inventories, commands, and work logs in the diff, documentation, or agent's response. Before
@@ -118,7 +128,7 @@ Add detail only when the change needs it, without a fixed template:
 Scope measurements and comparisons to what was observed; redact sensitive screenshot content.
 Distinguish intended behavior from verified outcomes, and reverting code from reversing data
 changes or effects already observed by consumers. Describe known behavioral limitations as part
-of the change. Use headings only when they help; omit empty sections and generic risk labels.
+of the change. Omit empty sections and generic risk labels.
 
 Keep test results, counts, CI status, and execution blockers in the agent's response or GitHub
 Checks, unless the user or repository explicitly requires them in the description. In that

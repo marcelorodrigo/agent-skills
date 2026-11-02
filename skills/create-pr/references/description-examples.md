@@ -29,7 +29,33 @@ The remaining high findings come through an exact-pinned build-tool family that 
 coordinated upgrade. This change leaves public peer ranges unchanged.
 ```
 
-## Complex Behavior Change
+## Multiple Review Concerns
+
+Use headings and grouped bullets when reviewers must understand distinct concerns together.
+Separate workflow wiring from reporter configuration rather than listing each changed file.
+
+```markdown
+### Why
+
+The analysis job expects coverage that the build job does not produce. Pass the test job's
+coverage report to analysis so the report producer and consumer agree.
+
+### What changed
+
+- **Workflow handoff:** Upload coverage from the test job and pass its artifact name to analysis.
+  Download that artifact in analysis instead of expecting coverage from the build job.
+- **Reporter configuration:** Use Vitest's native LCOV reporter to write the report consumed by
+  analysis, while retaining the console summary.
+- **Consumer guidance:** Document reporter settings and the artifact handoff together so callers
+  configure both sides.
+
+### Compatibility
+
+Callers must provide a coverage artifact containing `lcov.info` before enabling analysis.
+Existing test and build jobs can run without analysis.
+```
+
+## Behavior Ordering
 
 Use a compact visual when ordering or ownership is clearer as a diagram.
 
