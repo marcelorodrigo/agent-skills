@@ -1,0 +1,101 @@
+{
+  "skill_name": "create-pr",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Draft a PR title and description from the supplied fixture. Do not publish.",
+      "expected_output": "Short prose for one mechanical change, without invented validation.",
+      "files": ["evals/files/mechanical-fix.md"],
+      "expectations": [
+        "The fix(ci) title identifies the timezone configuration correction.",
+        "The body uses short prose rather than headings driven by the 23-file count.",
+        "The body explains that the correction makes scheduled-job tests use UTC.",
+        "The PR body invents no completed tests, CI results, or performance claims."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Draft a PR title and description from the supplied fixture. Do not publish.",
+      "expected_output": "Grouped review concerns with the coverage prerequisite preserved.",
+      "files": ["evals/files/coverage-handoff.md"],
+      "expectations": [
+        "The fix(ci) title leads with reusing or handing off existing test coverage.",
+        "The body groups workflow, reporter, and caller concerns rather than listing files.",
+        "The body preserves the prerequisite of an artifact containing lcov.info.",
+        "The body explains the duplicate test run without inventing validation or measurements."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Draft a PR title and description from the supplied fixture. Do not publish.",
+      "expected_output": "An outcome-led title and readable account of partial locking.",
+      "files": ["evals/files/actions-migration.md"],
+      "expectations": [
+        "The fix(ci) title names major action references and a lockfile, not CMS details.",
+        "The body states that locking covers four workflows, not the entire repository.",
+        "The body retains the CMS runner minimum and GitHub.com or Enterprise Cloud scope.",
+        "The body does not imply major action upgrades or new organization enforcement."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Draft a PR title and description from the supplied fixture. Do not publish.",
+      "expected_output": "Plain-language grouping explanation that retains security scope limits.",
+      "files": ["evals/files/dependency-groups.md"],
+      "expectations": [
+        "The chore(ci) title and opening identify grouping related dependency updates.",
+        "The body explains grouping without copying unexplained updater implementation jargon.",
+        "The body limits security grouping to root npm jobs and keeps unrelated fixes separate.",
+        "The body checks new groups before replacing PRs, without claiming verified alerts."
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Revise the existing PR title and description from the fixture. Do not publish.",
+      "expected_output": "Feature framing for the complete PR, not the latest follow-up fix.",
+      "files": ["evals/files/unreleased-library.md"],
+      "expectations": [
+        "The feat(i18n) title describes adding the locale library, not the latest test fix.",
+        "The body explains locale registration, switching, and fallback-message resolution.",
+        "The text does not frame this as a dependency-update PR or published API break.",
+        "Follow-up fixes remain subordinate and no validation results are invented."
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "Suggest only a replacement PR title from the supplied fixture. Do not publish.",
+      "expected_output": "Only the requested title, without rewriting the existing description.",
+      "files": ["evals/files/title-only.md"],
+      "expectations": [
+        "The deliverable contains only a replacement title, not a rewritten PR body.",
+        "The title uses feat(search) for the new search behavior.",
+        "The title describes availability filtering rather than supporting test fixtures.",
+        "The transcript shows no publication, repository mutation, or live GitHub access."
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "Draft a PR title and description from the supplied fixture. Do not publish.",
+      "expected_output": "Required template sections and truthful local-versus-CI validation.",
+      "files": ["evals/files/required-template.md"],
+      "expectations": [
+        "The fix(cache) title identifies cache invalidation before update publication.",
+        "The body contains the required Summary, Compatibility, and Validation headings.",
+        "The body preserves the unchanged public API and event payload.",
+        "Validation states that 14 local tests passed and CI has not run, without conflating them."
+      ]
+    },
+    {
+      "id": 8,
+      "prompt": "Draft a PR title and description from the supplied fixture. Do not publish.",
+      "expected_output": "Release-aware correction type for a runtime dependency security update.",
+      "files": ["evals/files/runtime-security.md"],
+      "expectations": [
+        "The title uses fix(client), inferred from the patch-release policy, rather than chore.",
+        "The body explains the malformed-input exposure and compatible dependency update.",
+        "The body preserves the exposure boundary: this is not remote code execution.",
+        "The text invents no advisory counts, passing checks, or claim that all alerts are fixed."
+      ]
+    }
+  ]
+}

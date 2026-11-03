@@ -1,25 +1,28 @@
-# PR Description Examples
+# PR Title and Description Examples
 
 Use these examples to choose a presentation, not as mandatory templates. Replace illustrative
 facts and measurements with observed facts. Follow required repository sections even when an
 example uses plain prose. Keep execution status in the agent's response or GitHub Checks.
+The conventional titles below assume the stated change type fits the repository's release policy.
 
 ## Small Configuration Fix
 
 Use a short explanation when motivation and impact fit in a few sentences. Skip a diagram
 when it would repeat the configuration diff.
 
-```markdown
-Group the parser and rule-testing packages across production and development dependencies.
-Separate updates currently produce incompatible AST types in rule tests.
+Title: `chore(lint): check unused imports in editor lint runs`
 
-Existing update branches need to be refreshed to pick up the grouping.
+```markdown
+Enable the existing unused-imports rule in editor lint runs as well as CI. Developers currently
+see those errors only after opening a PR. The rule and its severity stay the same.
 ```
 
 ## Dependency Security Fix
 
 Scope security improvements without implying every advisory is fixed. Choose the title using
 the repository's release policy; use `fix` when this change requires a patch release.
+
+Title: `fix(worker): update dependencies to address security advisories`
 
 ```markdown
 Update compatible dependencies to reduce audit findings from 18 to 11, including high-severity
@@ -32,49 +35,91 @@ coordinated upgrade. This change leaves public peer ranges unchanged.
 ## Multiple Review Concerns
 
 Use headings and grouped bullets when reviewers must understand distinct concerns together.
-Separate workflow wiring from reporter configuration rather than listing each changed file.
+Separate the API, processing, and user-facing behavior rather than listing each changed file.
+
+Title: `feat(inventory): add CSV stock imports`
 
 ```markdown
 ### Why
 
-The analysis job expects coverage that the build job does not produce. Pass the test job's
-coverage report to analysis so the report producer and consumer agree.
+Store managers currently enter stock adjustments one item at a time. Let them upload a CSV
+file and review rejected rows before the import changes stock levels.
 
 ### What changed
 
-- **Workflow handoff:** Upload coverage from the test job and pass its artifact name to analysis.
-  Download that artifact in analysis instead of expecting coverage from the build job.
-- **Reporter configuration:** Use Vitest's native LCOV reporter to write the report consumed by
-  analysis, while retaining the console summary.
-- **Consumer guidance:** Document reporter settings and the artifact handoff together so callers
-  configure both sides.
+- **Upload API:** Accept stock-adjustment files and return an import identifier.
+- **Processing:** Validate rows and store rejected entries without changing their stock levels.
+- **Review screen:** Show accepted and rejected rows before the manager confirms the import.
 
-### Compatibility
+### Rollout
 
-Callers must provide a coverage artifact containing `lcov.info` before enabling analysis.
-Existing test and build jobs can run without analysis.
+Deploy the import worker before enabling CSV uploads. Keep manual adjustments available while
+the import flow is disabled.
 ```
+
+## Primary Change Versus Supporting Detail
+
+Suppose the PR adds a bulk order-submission endpoint. Request normalization and retry helpers
+support that behavior but do not describe the capability consumers receive.
+
+| Title | Assessment |
+| --- | --- |
+| `feat(api): add request normalization and retry helpers` | Buries the primary change |
+| `feat(api): add bulk order submission` | Names the consumer-facing capability |
+
+For an existing PR that adds CSV downloads, accompanying test fixes and dependency updates do
+not replace that feature as its purpose. Use a title such as `feat(export): add CSV downloads`
+when supported by the complete diff and release policy, rather than copying the last fix commit.
+
+## Dense Wording Versus Plain Language
+
+Suppose the diff lets workspace administrators invite members to their own workspace, a task
+that previously required an organization administrator. Organization-wide access stays restricted.
+
+Dense: "Decouple membership provisioning from organization-scoped administration through
+role-stratified authorization predicates and tenant-constrained subject resolution."
+
+Title: `feat(workspaces): let workspace administrators invite members`
+
+```markdown
+### Why
+
+Workspace administrators must ask an organization administrator to invite each new member.
+
+### What changed
+
+- Let workspace administrators invite members to their own workspace.
+- Keep organization-wide access restricted to organization administrators.
+
+Existing organization administrators keep their current permissions.
+```
+
+Keep meaningful scope limits such as "their own workspace" while simplifying the wording.
+Explain the permission boundary instead of listing authorization implementation details.
 
 ## Behavior Ordering
 
 Use a compact visual when ordering or ownership is clearer as a diagram.
 
+Title: `fix(checkout): reserve inventory before confirming orders`
+
 ````markdown
-Invalidate the product cache before announcing an update to subscribers.
-Subscribers currently receive the event while the previous cache entry is still available,
-so an immediate read can return the old product.
+Reserve inventory before confirming an order. Confirmation currently happens first, so an
+inventory shortage can reject an order after the customer receives a confirmation.
 
 ```text
-save product
-  persist product
-  invalidate product cache
-   publish product-updated
+submit order
+  validate order
+  reserve inventory
+  confirm order
 ```
 ````
 
 ## Risky Migration
 
 Describe rollout boundaries and the point beyond which reverting code is insufficient.
+
+Title: `feat(billing): add normalized invoice-reference writes`
 
 ```markdown
 Add a nullable normalized invoice-reference column and dual writes as the first step toward
